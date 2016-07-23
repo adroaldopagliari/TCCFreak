@@ -147,11 +147,9 @@
 
                         <button class="button widget uib_w_4 d-margins ion button-balanced ion-calendar icon-left" data-uib="ionic/button" data-ver="0" id="btnfrequencia">Frequência</button>
                         <button class="button widget uib_w_5 d-margins ion button-balanced ion-code-working icon-left" data-uib="ionic/button" data-ver="0" id="btntrabalhos">Trabalhos</button>
-                        <label class="item item-input widget uib_w_28 d-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">Label</span>
-                            <input type="text" placeholder="Placeholder" value="input">
-                        </label>
+
                         <button class="button widget uib_w_6 d-margins ion button-balanced ion-person-stalker icon-left" data-uib="ionic/button" data-ver="0" id="btnalunos">Alunos</button>
-                        <button class="button widget uib_w_20 d-margins ion button-balanced ion-connection-bars icon-left" data-uib="ionic/button" data-ver="0" id="button">Sincronizar</button>
+                        <button class="button widget uib_w_20 d-margins ion button-balanced ion-connection-bars icon-left" data-uib="ionic/button" data-ver="0" id="btnsincronizar">Sincronizar</button>
                         <button class="button widget uib_w_7 d-margins ion button-balanced ion-android-information icon-left" data-uib="ionic/button" data-ver="0" id="btninformacoes" ng-controller="uib_w_23_popup_controller" ng-click="show()">Informações</button>
                         <button class="button widget uib_w_8 d-margins ion button-balanced ion-close-circled icon-left" data-uib="ionic/button" data-ver="0" id="btnsair">Sair</button>
                     </div>
@@ -191,12 +189,14 @@
                         </ion-list>
                     </ion-scroll>
                     !-->
-
                     <label class="item item-input widget uib_w_24 d-margins" data-uib="ionic/input" data-ver="0">
                         <input type="text" placeholder="Nome do curso" id="txtnomecursotra">
                     </label>
                     <label class="item item-input widget uib_w_25 d-margins" data-uib="ionic/input" data-ver="0">
                         <input type="text" placeholder="Nome do trabalho" id="txtnometrabalho">
+                    </label>
+                    <label class="item item-input widget uib_w_29 d-margins" data-uib="ionic/input" data-ver="0">
+                        <input type="hidden" placeholder="Código do trabalho" id="txtcodtra">
                     </label>
                     <button class="button widget uib_w_26 d-margins" data-uib="ionic/button" data-ver="0" id="btncadastrartrabalho">Cadastrar</button>
                     <button class="button widget uib_w_27 d-margins" data-uib="ionic/button" data-ver="0" id="btnvoltartrabalho">Voltar</button>

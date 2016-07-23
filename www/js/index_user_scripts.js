@@ -139,7 +139,11 @@ var padAssinatura;
                     $("#lsttrabalhos").prepend(
                         '<ion-item id="' + trabalhos[i].nomtra + '" class="item widget uib_w_6 item-button-right" data-uib="ionic/list_item" data-ver="0"> ' +
                         '<div class="buttons"> ' +
-                        ' <button id="' + trabalhos[i].codtra + '" class="button button-positive" onClick=editTrabalho("' + trabalhos[i].codtra + '")><i class="icon icon ion-edit"></i> </button> ' +
+                        ' <button id="' + trabalhos[i].codtra + '" class="button button-positive" onClick=editTrabalho("' +
+                        trabalhos[i].codtra + '","' +
+                        trabalhos[i].nomtra + '","' +
+                        trabalhos[i].nomcur + '")>' +
+                        '<i class="icon icon ion-edit"></i> </button> ' +
                         ' <button id="' + trabalhos[i].codtra + '" name = "' + i + '" class="button button-assertive" onClick=deleteTrabalho("' + trabalhos[i].codtra + '")><i class="icon icon ion-trash-b"></i> ' +
                         ' </button>' +
                         ' </div>' +
@@ -157,17 +161,32 @@ var padAssinatura;
         $(document).on("click", "#btncadastrartrabalho", function (evt) {
             console.log($("#txtnometrabalho").val());
             console.log($("#txtnomecursotra").val());
-            db.insertTrabalho(JSON.stringify({
-                "nomtra": $("#txtnometrabalho").val(),
-                "nomcur": $("#txtnomecursotra").val()
-            }), function (status) {
-                if (status == true) {
-                    // capturando os dados do aluno da tela        
-                    navigator.notification.alert(
-                        "Trabalho cadastrado com sucesso!"
-                    );
-                }
-            });
+            if ($("#txtnometrabalho").val() != '') {
+                db.insertTrabalho(JSON.stringify({
+                    "nomtra": $("#txtnometrabalho").val(),
+                    "nomcur": $("#txtnomecursotra").val()
+                }), function (status) {
+                    if (status == true) {
+                        // capturando os dados do aluno da tela        
+                        navigator.notification.alert(
+                            "Trabalho cadastrado com sucesso!"
+                        );
+                    }
+                });
+            } else {
+                db.updateTrabalho(JSON.stringify({
+                    "nomtra": $("#txtnometrabalho").val(),
+                    "nomcur": $("#txtnomecursotra").val(),
+                    "codtra": $("#txtcodtra").val()
+                }), function (status) {
+                    if (status == true) {
+                        // capturando os dados do aluno da tela        
+                        navigator.notification.alert(
+                            "Trabalho atualizado com sucesso!"
+                        );
+                    }
+                });
+            }
             return false;
         });
 
@@ -183,9 +202,12 @@ var padAssinatura;
 })();
 
 
-function editTrabalho(codtra) {
+function editTrabalho(codtra, nomtra, nomcur) {
     console.log("Editar: " + codtra);
-
+    activate_subpage("#sbtrabalhos");
+    $("#txtcodtra").val(codtra);
+    $("#txtnometrabalho").val(nomtra);
+    $("#txtnomecursotra").val(nomcur);
 }
 
 function deleteTrabalho(codtra) {
@@ -198,7 +220,7 @@ function deleteTrabalho(codtra) {
             item.parentNode.removeChild(item);
         }
     });
-    
+
     $("#btntrabalhos").click();
 }
 

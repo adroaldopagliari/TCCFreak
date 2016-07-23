@@ -8,7 +8,7 @@ $(function () {
         $.ajax({
             type: 'GET',
             // adaptar para sincronização
-            url: 'http://rasystems.esy.es/index.php/frequencias',
+            url: 'http://rasystems.esy.es/index.php/trabalhos',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             beforeSend: function () {
