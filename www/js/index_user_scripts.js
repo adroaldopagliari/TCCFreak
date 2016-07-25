@@ -198,19 +198,15 @@ var padAssinatura;
         });
 
 
-        /* button  #btnsincronizar */
-        $(document).on("click", "#btnsincronizar", function (evt) {
-            var $loading = $('#loading').hide();
-            $(document)
-                .ajaxStart(function () {
-                    $loading.show();
-                    setInterval(function () {}, 10000);
-                })
-                .ajaxStop(function () {
-                    $loading.hide();
-                });
-            return false;
-        });
+        var $loading = $('#loading').hide();
+        $(document)
+            .ajaxStart(function () {
+                $loading.show();
+                setInterval(function () {}, 10000);
+            })
+            .ajaxStop(function () {
+                $loading.hide();
+            });
 
     }
     document.addEventListener("app.Ready", register_event_handlers, false);
